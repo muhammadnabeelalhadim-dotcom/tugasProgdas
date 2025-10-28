@@ -1,1 +1,59 @@
+#include <iostream>
+#include <cmath> // digunakan untuk fungsi matematika seperti sqrt(akar) dan pow(pangkat)
 
+
+const double PI = 3.1416; // Nilai konstanta pi
+
+double distance(double x1, double y1, double x2, double y2) {
+    return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2)); // Rumus jarak antar dua titik
+}
+
+double radius(double x_center, double y_center, double x_point, double y_point) {
+    return distance(x_center, y_center, x_point, y_point); // mengembalikan jarak sebagai jari-jari
+}
+
+double circumference(double r) {
+    return 2 * PI * r; // Rumus keliling: 2 * pi * r
+}
+
+double area(double r) {
+    return PI * pow(r, 2); // Rumus luas: pi * r^2
+}
+
+/* Keterangan:
+x_center : Koordinat x titik tengah lingkaran
+y_center : Koordinat y titik tengah lingkaran
+x_point  : Koordinat x titik di tepi lingkaran
+y_point  : Koordinat y titik di tepi lingkaran
+r        : Jari-jari lingkaran
+*/
+
+int main() {
+    double x_center, y_center, x_point, y_point; // Deklarasi variabel untuk menyimpan input pengguna
+
+    
+    std::cout << "Alat Penghitung Lingkaran!" << std::endl;
+    std::cout << " " << std::endl;
+    std::cout << "Masukkan koordinat titik tengah lingkaran (x y): ";
+    std::cin >> x_center >> y_center;// Ambil input dari pengguna untuk titik tengah
+
+    std::cout << "Masukkan koordinat sebuah titik di tepi lingkaran (x y): ";
+    std::cin >> x_point >> y_point; // Ambil input dari pengguna untuk titik di tepi lingkaran
+
+    
+    double rad = radius(x_center, y_center, x_point, y_point); // Menghitung jari-jari menggunakan fungsi yang sudah dibuat
+
+    // Menghitung diameter, keliling, dan luas lingkaran
+    double diam = 2 * rad;
+    double circum = circumference(rad);
+    double ar = area(rad);
+
+    // Menampilkan semua hasil perhitungan
+    std::cout << "\nHasil Perhitungan: " << std::endl;
+    std::cout << "Jari-jari lingkaran: " << rad << std::endl;
+    std::cout << "Diameter lingkaran: " << diam << std::endl;
+    std::cout << "Keliling lingkaran: " << circum << std::endl;
+    std::cout << "Luas lingkaran: " << ar << std::endl;
+
+    return 0;
+}
